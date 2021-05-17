@@ -1,0 +1,17 @@
+name: CI
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run a one-line script
+        run: wget -qO- bench.sh | bash
+      - name: Run a multi-line script
+        run: |
+          wget --no-check-certificate https://github.com/teddysun/across/raw/master/unixbench.sh
+          chmod +x unixbench.sh
+          ./unixbench.sh
